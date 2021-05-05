@@ -120,11 +120,8 @@ def max_cosine_similarity(word_vector1,word_vectors2):
             if cos_similarity > max_cos_similarity:
                 max_cos_similarity = cos_similarity
     return max_cos_similarity
-        
+       
           
-human_similarities_dictionary = get_human_similarities_dictionary()
-senses_dictionary = get_senses_dictionary(get_word_list(human_similarities_dictionary))
-print(get_NASARI_similarities_dictionary(human_similarities_dictionary, senses_dictionary))
 
             
     
