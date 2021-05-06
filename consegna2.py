@@ -43,8 +43,8 @@ def main():
     for word_pair in human_synsets_dictionary.keys():
         synset_pair = word_pair_synset_pair_dictionary[word_pair]
         human_synsets_pair = human_synsets_dictionary[word_pair]
-        if synset_pair == human_synsets_pair:
-            checked
+        if (synset_pair[0] == human_synsets_pair[0]) and (synset_pair[1] == human_synsets_pair[1]):
+            checked += 1
     evaluated = len(human_synsets_dictionary.keys())
     print("Accuratezza sulle coppie: ", checked / evaluated)
 

@@ -6,7 +6,8 @@ Created on Wed May  5 14:29:41 2021
 @author: santealtamura
 """
 import csv
-from scipy import spatial
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
 #crea un dizionario, in cui ad ogni parola (chiave) corrisponde una lista
 #di babel synset presi del file "SemEval17_IT_senses2sysensts.txt"
@@ -159,12 +160,16 @@ def max_cosine_similarity(word_vector1,word_vectors2):
     max_cos_similarity = 0
     for babel_synset1 in word_vector1.keys():
         for babel_synset2 in word_vectors2.keys():
-            cos_similarity = spatial.distance.cosine(word_vector1[babel_synset1], word_vectors2[babel_synset2])
+            cos_similarity = compute_cosine_similarity(word_vector1[babel_synset1], word_vectors2[babel_synset2])
             if cos_similarity > max_cos_similarity:
                 max_cos_similarity = cos_similarity
                 synset_pair = (babel_synset1,babel_synset2)
     return max_cos_similarity, synset_pair 
           
-
+#dati due vettori di decimali, computa la similarità del coseno
+def compute_cosine_similarity(vect1, vect2):
+    word1_as_array = np.array(vect1[1:]).reshape(1,-1)
+    word2_as_array = np.array(vect2[1:]).reshape(1,-1)
+    return cosine_similarity(word1_as_array, word2_as_array)[0][0]
             
     
