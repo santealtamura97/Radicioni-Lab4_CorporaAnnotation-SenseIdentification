@@ -168,6 +168,7 @@ def max_cosine_similarity(word_vector1,word_vectors2):
           
 #dati due vettori di decimali, computa la similarità del coseno
 def compute_cosine_similarity(vect1, vect2):
+    print(vect1," ",vect2)
     word1_as_array = np.array(vect1[1:]).reshape(1,-1)
     word2_as_array = np.array(vect2[1:]).reshape(1,-1)
     return cosine_similarity(word1_as_array, word2_as_array)[0][0]
